@@ -1,0 +1,14 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: red solid 2px;
+    flex-grow: 1;
+}
