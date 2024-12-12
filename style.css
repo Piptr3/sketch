@@ -9,6 +9,5 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: red solid 2px;
     flex-grow: 1;
 }
