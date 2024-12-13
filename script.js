@@ -1,28 +1,32 @@
 const container = document.querySelector(".board");
 container.style.border = "solid black 2px"
-for(let i = 0; i < 16; i++ ) {
-    const column = document.createElement("div");
 
-    for(let j = 0; j < 16; j++) {
+function createGrid(size) {
+    container.innerHTML = "";
+
+    const squareSize = 480 / size;
+
+    for(let i = 0; i < size; i++ ) {
         const row = document.createElement("div");
-        row.style.width = "30px";
-        row.style.height = "30px";
-        row.classList.add("square");
-        column.appendChild(row);
-    }
     
-    container.appendChild(column);
-    }
+        for(let j = 0; j < size; j++) {
+            const square = document.createElement("div");
+            square.style.width = `${squareSize}px`;
+            square.style.height = `${squareSize}px`;
+            square.classList.add("square");
 
-const squares = document.querySelectorAll(".square");
+            square.addEventListener("mouseover", () => {
+                square.style.backgroundColor = 'Black';
+            })
 
-squares.forEach((square) => {
-    square.addEventListener("mouseover", () => {
-        square.style.backgroundColor = 'Black';
-    })
-})
+            row.appendChild(square);
+        }
+        
+        container.appendChild(row);
+        }
+}
 
-const clearButton = document.querySelector(".btn");
+const clearButton = document.querySelector("#clearBtn");
 
 clearButton.addEventListener('click', () => {
     const squares = document.querySelectorAll(".square")
@@ -30,3 +34,15 @@ clearButton.addEventListener('click', () => {
         square.style.backgroundColor = 'white';
     })
 })
+
+const sizeButton = document.querySelector("#sizeBtn");
+
+sizeButton.addEventListener('click', () => {
+    let size = prompt("Select size.");
+
+    size = parseInt(size);
+
+    createGrid(size);
+})
+
+createGrid(16);
